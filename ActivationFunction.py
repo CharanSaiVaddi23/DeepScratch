@@ -24,7 +24,7 @@ class Activations:
     def LeakyReLU(self, x):
         return max(self.Alpha * x, x)
     def LeakyReLU_derivative(self, x):
-        return 1 if x>=0 return self.Alpha
+        return 1 if x>=0 else self.Alpha
     
     def swish(self, x):
         return x * self.sigmoid(x)
@@ -43,6 +43,6 @@ class Activations:
         return self.Lambda if x>=0 else self.Lambda * self.Alpha * math.exp(x)
     
     def GELU(self, x):
-        return 0.5 * x * (1 + erf(x / sqrt(2)))
+        return 0.5 * x * (1 + math.erf(x / math.sqrt(2)))
     def GELU_derivative(self, x):
-        return 0.5 * (erf(x / sqrt(2)) + 0.797885 * exp(- (x**2)/2) * x + 1)
+        return 0.5 * (math.erf(x / math.sqrt(2)) + 0.797885 * math.exp(- (x**2)/2) * x + 1)
